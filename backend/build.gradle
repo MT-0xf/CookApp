@@ -1,0 +1,28 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.3'
+	id 'io.spring.dependency-management' version '1.0.13.RELEASE'
+	id 'java'
+}
+
+group = 'com.cookapp'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '15'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation "org.projectlombok:lombok"
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation "com.graphql-java-kickstart:graphql-spring-boot-starter:5.1"
+	implementation "com.graphql-java-kickstart:graphiql-spring-boot-starter:5.1"
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	runtimeOnly 'mysql:mysql-connector-java'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework:spring-webflux'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
