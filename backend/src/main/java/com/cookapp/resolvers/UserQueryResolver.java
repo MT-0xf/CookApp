@@ -1,7 +1,7 @@
-package com.coockapp.resolvers;
+package com.cookapp.resolvers;
 
-import com.coockapp.infra.UserRepositoryImpl;
-import com.coockapp.types.User;
+import com.cookapp.infra.UserRepositoryImpl;
+import com.cookapp.types.User;
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

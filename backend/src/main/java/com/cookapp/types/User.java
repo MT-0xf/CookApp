@@ -1,4 +1,4 @@
-package com.coockapp.types;
+package com.cookapp.types;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

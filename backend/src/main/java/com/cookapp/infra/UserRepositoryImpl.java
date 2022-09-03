@@ -1,7 +1,7 @@
-package com.coockapp.infra;
+package com.cookapp.infra;
 
-import com.coockapp.model.UserRepository;
-import com.coockapp.types.User;
+import com.cookapp.model.UserRepository;
+import com.cookapp.types.User;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
