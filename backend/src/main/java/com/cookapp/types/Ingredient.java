@@ -25,4 +25,8 @@ public class Ingredient implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "recipe_id", insertable = false, updatable = false)
     private RecipeData recipeData;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ingredient_id", insertable = false, updatable = false)
+    private IngredientMaster ingredientMaster;
 }

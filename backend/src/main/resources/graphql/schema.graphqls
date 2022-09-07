@@ -19,4 +19,10 @@ type Ingredient {
     recipeId: ID!
     ingredientId: ID!
     amount: String!
+    ingredientMaster: IngredientMaster!
+}
+
+type IngredientMaster {
+    ingredientId: ID!
+    ingredientName: String!
 }

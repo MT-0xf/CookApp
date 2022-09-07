@@ -21,7 +21,7 @@ public class RecipeDataRepositoryImpl implements RecipeDataRepository {
 
     @Override
     public List<RecipeData> getRecipeData() {
-        String query = "SELECT rd FROM RecipeData rd INNER JOIN FETCH rd.ingredients";
+        String query = "SELECT rd FROM RecipeData rd INNER JOIN FETCH rd.ingredients ig INNER JOIN FETCH ig.ingredientMaster";
 
         List<RecipeData> recipeData = entityManager
                 .createQuery(query, RecipeData.class)
