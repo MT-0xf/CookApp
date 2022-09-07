@@ -1,9 +1,22 @@
 type Query {
     getUsers: [User]
+    getRecipeData: [RecipeData]
 }
 
 type User {
     id: ID!
     name: String!
     password: String!
+}
+
+type RecipeData {
+    recipeId: ID!
+    dishName: String!
+    ingredients: [Ingredient]
+}
+
+type Ingredient {
+    recipeId: ID!
+    ingredientId: ID!
+    amount: String!
 }
