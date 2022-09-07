@@ -19,6 +19,6 @@ public class RecipeData {
     @Column(name = "dish_name")
     private String dishName;
 
-    @OneToMany(mappedBy = "recipeData", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "recipeId", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Ingredient> ingredients = new ArrayList<Ingredient>();
 }

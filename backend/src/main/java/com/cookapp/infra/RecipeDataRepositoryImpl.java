@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Component
@@ -21,9 +23,11 @@ public class RecipeDataRepositoryImpl implements RecipeDataRepository {
     public List<RecipeData> getRecipeData() {
         String query = "SELECT rd FROM RecipeData rd INNER JOIN FETCH rd.ingredients";
 
-        List<RecipeData> results = entityManager
+        List<RecipeData> recipeData = entityManager
                 .createQuery(query, RecipeData.class)
                 .getResultList();
+
+        List<RecipeData> results = new ArrayList<>(new HashSet<>(recipeData));
 
         return results;
     }
