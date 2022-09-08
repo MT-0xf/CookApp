@@ -21,4 +21,7 @@ public class RecipeData {
 
     @OneToMany(mappedBy = "recipeId", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Ingredient> ingredients = new ArrayList<Ingredient>();
+
+    @OneToMany(mappedBy = "recipeId", cascade = CascadeType.ALL, orphanRemoval = true)
+    List<CookProcedure> cookProcedures = new ArrayList<CookProcedure>();
 }

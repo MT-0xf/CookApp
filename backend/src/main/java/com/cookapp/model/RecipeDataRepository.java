@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface RecipeDataRepository {
     public List<RecipeData> getRecipeData();
+    public List<RecipeData> getRecipeCookProcedures();
 }

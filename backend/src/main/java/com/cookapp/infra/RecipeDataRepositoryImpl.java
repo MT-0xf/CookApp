@@ -31,4 +31,17 @@ public class RecipeDataRepositoryImpl implements RecipeDataRepository {
 
         return results;
     }
+
+    @Override
+    public List<RecipeData> getRecipeCookProcedures() {
+        String query = "SELECT rd FROM RecipeData rd INNER JOIN FETCH rd.cookProcedures";
+
+        List<RecipeData> recipeData = entityManager
+                .createQuery(query, RecipeData.class)
+                .getResultList();
+
+        List<RecipeData> results = new ArrayList<>(new HashSet<>(recipeData));
+
+        return results;
+    }
 }

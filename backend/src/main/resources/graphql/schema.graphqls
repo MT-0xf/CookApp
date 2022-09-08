@@ -1,6 +1,7 @@
 type Query {
     getUsers: [User]
     getRecipeData: [RecipeData]
+    getRecipeCookProcedures: [RecipeData]
 }
 
 type User {
@@ -13,6 +14,7 @@ type RecipeData {
     recipeId: ID!
     dishName: String!
     ingredients: [Ingredient]
+    cookProcedures: [CookProcedure]
 }
 
 type Ingredient {
@@ -25,4 +27,11 @@ type Ingredient {
 type IngredientMaster {
     ingredientId: ID!
     ingredientName: String!
+}
+
+type CookProcedure {
+    recipeId: ID!
+    order: Int!
+    method: String!
+    img: String!
 }

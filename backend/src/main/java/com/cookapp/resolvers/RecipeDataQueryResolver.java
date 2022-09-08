@@ -21,4 +21,7 @@ public class RecipeDataQueryResolver implements GraphQLQueryResolver {
         return this.recipeDataRepository.getRecipeData();
     }
 
+    public List<RecipeData> getRecipeCookProcedures() {
+        return this.recipeDataRepository.getRecipeCookProcedures();
+    }
 }
