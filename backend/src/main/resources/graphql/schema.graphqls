@@ -4,6 +4,10 @@ type Query {
     getRecipeCookProcedures: [RecipeData]
 }
 
+type Mutation {
+    registerIngredients(ingredients: [InputIngredient]): RegisterIngredientResponse
+}
+
 type User {
     id: ID!
     name: String!
@@ -24,6 +28,12 @@ type Ingredient {
     ingredientMaster: IngredientMaster!
 }
 
+input InputIngredient {
+    recipeId: ID!
+    ingredientId: ID!
+    amount: String!
+}
+
 type IngredientMaster {
     ingredientId: ID!
     ingredientName: String!
@@ -34,4 +44,10 @@ type CookProcedure {
     order: Int!
     method: String!
     img: String!
+}
+
+type RegisterIngredientResponse {
+    ingredients: [Ingredient]
+    isRegister: Boolean!
+    errorMessage: String
 }

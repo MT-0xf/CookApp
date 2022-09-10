@@ -29,4 +29,36 @@ public class Ingredient implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ingredient_id", insertable = false, updatable = false)
     private IngredientMaster ingredientMaster;
+
+    public String getRecipeId() {
+        return this.recipeId;
+    }
+
+    public String getIngredientId() {
+        return this.ingredientId;
+    }
+
+    public String getAmount() {
+        return this.amount;
+    }
+
+    public void setRecipeId(String recipeId) {
+        this.recipeId = recipeId;
+    }
+
+    public void setIngredientId(String ingredientId) {
+        this.ingredientId = ingredientId;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
+    public IngredientMaster getIngredientMaster() {
+        return this.ingredientMaster;
+    }
+
+    public void setIngredientMaster(IngredientMaster ingredientMaster) {
+        this.ingredientMaster = ingredientMaster;
+    }
 }
