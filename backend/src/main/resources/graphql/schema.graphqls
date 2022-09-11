@@ -6,6 +6,7 @@ type Query {
 
 type Mutation {
     registerIngredients(ingredients: [InputIngredient]): RegisterIngredientResponse
+    registerRecipeData(inputCreateRecipe: InputCreateRecipe): Boolean
 }
 
 type User {
@@ -28,11 +29,6 @@ type Ingredient {
     ingredientMaster: IngredientMaster!
 }
 
-input InputIngredient {
-    recipeId: ID!
-    ingredientId: ID!
-    amount: String!
-}
 
 type IngredientMaster {
     ingredientId: ID!
@@ -41,7 +37,7 @@ type IngredientMaster {
 
 type CookProcedure {
     recipeId: ID!
-    order: Int!
+    orderNumber: Int!
     method: String!
     img: String!
 }
@@ -51,3 +47,36 @@ type RegisterIngredientResponse {
     isRegister: Boolean!
     errorMessage: String
 }
+
+input InputRecipeData {
+    recipeId: String
+    dishName: String!
+}
+
+type InputIngredient {
+    recipeId: ID
+    ingredientId: ID
+    ingredientName: String!
+    amount: String!
+}
+
+input InputCookProcedure {
+    recipeId: String
+    orderNumber: Int
+    method: String!
+    img: String!
+}
+
+input InputIngredient {
+    recipeId: ID
+    ingredientId: ID
+    ingredientName: String!
+    amount: String!
+}
+
+input InputCreateRecipe {
+    recipeData: InputRecipeData
+    ingredients: [InputIngredient]
+    procedures: [InputCookProcedure]
+}
+

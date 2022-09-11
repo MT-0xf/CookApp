@@ -1,6 +1,6 @@
 package com.cookapp.infra;
 
-import com.cookapp.model.UserRepository;
+import com.cookapp.repository.UserRepository;
 import com.cookapp.types.User;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

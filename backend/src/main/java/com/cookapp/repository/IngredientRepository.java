@@ -1,6 +1,6 @@
-package com.cookapp.model;
+package com.cookapp.repository;
 
-import com.cookapp.inputs.InputIngredient;
+import com.cookapp.inputs.model.InputIngredient;
 import com.cookapp.types.Ingredient;
 import com.cookapp.types.RegisterIngredientResponse;
 

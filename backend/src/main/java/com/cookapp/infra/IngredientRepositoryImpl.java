@@ -1,7 +1,7 @@
 package com.cookapp.infra;
 
-import com.cookapp.inputs.InputIngredient;
-import com.cookapp.model.IngredientRepository;
+import com.cookapp.inputs.model.InputIngredient;
+import com.cookapp.repository.IngredientRepository;
 import com.cookapp.types.Ingredient;
 import com.cookapp.types.RegisterIngredientResponse;
 import lombok.AllArgsConstructor;

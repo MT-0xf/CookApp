@@ -1,4 +1,4 @@
-package com.cookapp.model;
+package com.cookapp.repository;
 
 import com.cookapp.types.User;
 import java.util.List;

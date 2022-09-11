@@ -16,8 +16,8 @@ public class CookProcedure implements Serializable {
     private String recipeId;
 
     @Id
-    @Column(name = "order")
-    private int order;
+    @Column(name = "order_number")
+    private int orderNumber;
 
     @Column(name = "method")
     private String method;

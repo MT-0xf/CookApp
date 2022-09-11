@@ -1,7 +1,7 @@
 package com.cookapp.resolvers;
 
 import com.cookapp.infra.IngredientRepositoryImpl;
-import com.cookapp.inputs.InputIngredient;
+import com.cookapp.inputs.model.InputIngredient;
 import com.cookapp.types.RegisterIngredientResponse;
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import lombok.extern.slf4j.Slf4j;
