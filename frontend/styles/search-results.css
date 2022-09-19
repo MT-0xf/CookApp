@@ -1,0 +1,33 @@
+.cook-img-area-margin {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cook-img-area {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.cook-img-area:hover .cook-description {
+	opacity: 1;
+}
+
+.cook-description {
+	height: 250px;
+    width: 200px;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    opacity: 0;
+    background-color: rgba(0,0,0,0.4);
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.cook-caption {
+    font-size: 130%;
+    text-align: center;
+    padding-top: 80px;
+    color: #fff;
+}
