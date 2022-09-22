@@ -22,99 +22,6 @@ const Home: NextPage = () => {
     await loaddata();
   }
 
-  const HEADER = styled.div`
-    background-color: #ff4500;
-    color: white;
-    padding: 13px 100px 10px 100px;
-    height: 45px;
-    @media (max-width: 747px) { 
-      padding: 13px 100px 10px 30px;
-    }
-  `
-
-  const HEADER_LEFT = styled.span`
-    float: left;
-  `
-  const HEADER_RIGHT = styled.span`
-    float: right;
-    &:hover { text-decoration: underline; }
-  `
-
-  const HEADER_RIGHT_ITEM = styled.span`
-    margin-right: 40px;
-  `
-
-  const MAIN_AREA = styled.div`
-    margin-left: auto;
-    margin-right: auto;
-  `
-
-  const SEARCH_AREA_IMAGE = styled.div`
-    background-color: black;
-    display:inline-block;
-    position: relative;
-  `
-
-  const SEARCH_AREA_INPUT = styled.div`
-    position: absolute;
-    top: 40%;
-    left: 29%;
-    @media (max-width: 1020px) and (min-width: 900px) { 
-      top: 35%;
-      left: 24%;
-    }
-    @media (max-width: 900px) and (min-width: 747px) { 
-      top: 20%;
-      left: 15%;
-    }
-    @media (max-width: 747px) and (min-width: 668px) {
-      top: 25%;
-      left: 30%;
-    }
-    @media (max-width: 668px) and (min-width: 600px) {
-      top: 25%;
-      left: 28%;
-    }
-    @media (max-width: 600px) {
-      top: 20%;
-      left: 10%;
-    }
-  `
-
-  const SEARCH_AREA_INPUT_TEXT = styled.input`
-    font-size: 22px;
-    padding: 10px 5px 10px 5px;
-    width: 480px;
-    margin-right: 5px;
-    @media (max-width: 747px) {
-      width: 250px;
-    }
-  `
-
-  const SEARCH_AREA_INPUT_BUTTON = styled.button`
-    padding: 22px 15px 16px 15px;
-    background-color: #ff4500;
-    color: white;
-    border: none;
-    &:hover { background-color: #fc0400; }
-  `
-
-  const IMG = styled.img`
-    opacity: 0.5;
-    display: inline-block;
-    width: 100%;
-    height: 750px;
-    object-fit: cover;
-    @media (max-width: 1020px) and (min-width: 748px) { 
-      height: 750px;
-      object-fit: cover;
-    }
-    @media (max-width: 747px) { 
-      height: 700px;
-      object-fit: cover;
-    }
-  `
-
   return (
     <div className={styles.container}>
       <Head>
@@ -125,13 +32,13 @@ const Home: NextPage = () => {
 
       <Header />
       
-      <SEARCH_AREA_IMAGE>
-        <IMG src='/assets/img/searchArea.jpg'></IMG> 
-        <SEARCH_AREA_INPUT>
-          <SEARCH_AREA_INPUT_TEXT></SEARCH_AREA_INPUT_TEXT>
-          <SEARCH_AREA_INPUT_BUTTON>検索</SEARCH_AREA_INPUT_BUTTON>
-        </SEARCH_AREA_INPUT>
-      </SEARCH_AREA_IMAGE>
+      <div className="search-area-img">
+        <img className="search-area-top-img" src='/assets/img/searchArea.jpg'></img> 
+        <div className="search-area-input">
+          <input className="search-area-input-text" type="text"></input>
+          <button className="search-area-input-button">検索</button>
+        </div>
+      </div>
     </div>
   )
 }

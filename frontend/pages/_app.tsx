@@ -1,6 +1,9 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import '../styles/search-results.css'
+import '../styles/recipe-register.css'
+import '../styles/top.css'
+import '../styles/header.css'
 
 import {
   ApolloClient,

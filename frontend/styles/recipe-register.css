@@ -1,0 +1,219 @@
+.background {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  display:inline-block;
+  position: relative;
+}
+
+.background-img {
+  width: 100%;
+  height: 1200px;
+  display: inline-block;
+  opacity: 0.5;
+  object-fit: cover;
+}
+
+.main-area {
+  width: 800px;
+  height: 1000px;
+  padding: 145px;
+  background-color: white;
+  opacity: 0.7;
+  position: absolute;
+  top: 7%;
+  left: 18%;
+}
+
+.recipe-register-input-form {
+  position: absolute;
+  top: 35%;
+  left: 30%;
+  height: 800px;
+  width: 550px;
+}
+
+.scroll{
+  height: 800px;
+  overflow: auto;
+}
+
+.recipe-register-input-text {
+  margin-top: 15px;
+  font-size: 22px;
+  padding: 10px 5px 10px 5px;
+  width: 480px;
+  background: white;
+  @media (max-width: 747px) {
+      width: 250px;
+  }
+}
+
+.recipe-register-input-label {
+  margin-top: 15px;
+}
+
+.input-text-ingredient {
+  margin-top: 15px;
+  font-size: 22px;
+  padding: 10px 5px 10px 5px;
+  width: 370px;
+  margin-right: 10px;
+  background: white;
+  @media (max-width: 747px) {
+      width: 250px;
+  }  
+}
+
+.input-text-amount {
+  margin-top: 15px;
+  font-size: 22px;
+  padding: 10px 5px 10px 5px;
+  width: 100px;
+  background: white;
+  @media (max-width: 747px) {
+      width: 250px;
+  }  
+}
+
+.ingredient-plus-area {
+  display: flex;
+  justify-content: space-between;
+  position: abusolute;
+  margin-top: 5px;
+}
+
+.ingredient-add-button-area {
+  height: 22px;
+}
+
+.dli-plus {
+  display: inline-block;
+  vertical-align: middle;
+  color: #333;
+  line-height: 1;
+  width: 1em;
+  height: 0.1em;
+  background: currentColor;
+  border-radius: 0.1em;
+  position: relative;
+}
+
+.dli-plus::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  border-radius: inherit;
+  transform: rotate(90deg);
+}
+
+.ingredient-add-label {
+  margin-top: 2px;
+  width: 80px;
+  margin-right: 445px;
+}
+
+.cookprocedure-textarea {
+  margin-top: 15px;
+  font-size: 22px;
+  padding: 10px 5px 10px 5px;
+  width: 480px;
+  resize: none;
+  background: white;
+  @media (max-width: 747px) {
+      width: 250px;
+  }
+}
+
+.dli-close {
+  display: inline-block;
+  vertical-align: middle;
+  color: #333;
+  line-height: 1;
+  width: 1em;
+  height: 0.1em;
+  background: currentColor;
+  border-radius: 0.1em;
+  position: relative;
+  transform: rotate(45deg);
+}
+
+.dli-close::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  border-radius: inherit;
+  transform: rotate(90deg);
+}
+
+.ingredient-remove-button-area {
+  height: 22px;
+  margin-left: 5px;
+  margin-top: 30px;
+}
+
+.ingredients-flex {
+  display: flex;
+}
+
+.cook-procedure-plus-area {
+  display: flex;
+  justify-content: space-between;
+  position: abusolute;
+  margin-top: 5px;
+}
+
+.cook-procedure-add-button-area {
+  height: 22px;
+}
+
+.cook-procedure-add-label {
+  margin-top: 2px;
+  width: 120px;
+  margin-right: 410px;
+}
+
+.cook-procedure-flex {
+  display: flex;
+}
+
+.cook-procedure-remove {
+  margin-top: 23px;
+  margin-left: 5px;
+  width:18px;
+  height: 18px;
+}
+
+.recipe-register-send-button {
+  padding: 0px 23px 0px 0px;
+  position: absolute;
+  top: 167%;
+  left: 30%;
+  height: 50px;
+  width: 550px;
+}
+
+.recipe-register-button-color {
+  color: #fff;
+  background-color: #ff4500;
+  font-size: 25px;
+  border: none;
+  width: 100%;
+}
+
+.recipe-register-button-color:hover {
+  color: #fff;
+  background: #fc0400;
+}
+
+.recipe-register-button-radius {
+  border-radius: 1vh;
+}

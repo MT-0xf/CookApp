@@ -1,0 +1,29 @@
+.header {
+    background-color: #ff4500;
+    color: white;
+    padding: 13px 100px 10px 100px;
+    height: 45px;
+    @media (max-width: 747px) { 
+      padding: 13px 100px 10px 30px;
+    }
+}
+
+.header-left {
+    float: left;
+}
+
+.header-left:hover {
+    text-decoration: underline;
+}
+
+.header-right {
+    float: right;
+}
+
+.header-right:hover {
+    text-decoration: underline;
+}
+
+.header-right-item {
+    margin-right: 40px;
+}
