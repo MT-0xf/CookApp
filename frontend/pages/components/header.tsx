@@ -9,28 +9,6 @@ export const Header: NextPage = () => {
   useEffect(() => {
       setWidth(window.innerWidth);  
   },[]);
-  
-  const HEADER = styled.div`
-    background-color: #ff4500;
-    color: white;
-    padding: 13px 100px 10px 100px;
-    height: 45px;
-    @media (max-width: 747px) { 
-      padding: 13px 100px 10px 30px;
-    }
-  `
-
-  const HEADER_LEFT = styled.span`
-    float: left;
-  `
-  const HEADER_RIGHT = styled.span`
-    float: right;
-    &:hover { text-decoration: underline; }
-  `
-
-  const HEADER_RIGHT_ITEM = styled.span`
-    margin-right: 40px;
-  `
 
   return (
     <div>

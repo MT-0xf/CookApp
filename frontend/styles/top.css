@@ -8,26 +8,6 @@
     position: absolute;
     top: 40%;
     left: 29%;
-    @media (max-width: 1020px) and (min-width: 900px) { 
-      top: 35%;
-      left: 24%;
-    }
-    @media (max-width: 900px) and (min-width: 747px) { 
-      top: 20%;
-      left: 15%;
-    }
-    @media (max-width: 747px) and (min-width: 668px) {
-      top: 25%;
-      left: 30%;
-    }
-    @media (max-width: 668px) and (min-width: 600px) {
-      top: 25%;
-      left: 28%;
-    }
-    @media (max-width: 600px) {
-      top: 20%;
-      left: 10%;
-    }
 }
 
 .search-area-input-text {
@@ -35,9 +15,6 @@
     padding: 10px 5px 10px 5px;
     width: 480px;
     margin-right: 5px;
-    @media (max-width: 747px) {
-      width: 250px;
-    }
 }
 
 .search-area-input-button {
@@ -57,12 +34,46 @@
     width: 100%;
     height: 750px;
     object-fit: cover;
-    @media (max-width: 1020px) and (min-width: 748px) { 
-      height: 750px;
-      object-fit: cover;
-    }
-    @media (max-width: 747px) { 
-      height: 700px;
-      object-fit: cover;
-    }
+}
+
+@media (max-width: 900px) and (min-width: 747px) { 
+  .search-area-input {
+    top: 20%;
+    left: 15%;  
+  }
+}
+@media (max-width: 747px) and (min-width: 668px) {
+  .search-area-input {
+    top: 25%;
+    left: 30%;
+  }
+}
+@media (max-width: 668px) and (min-width: 600px) {
+  .search-area-input {
+    top: 25%;
+    left: 28%;
+  }
+}
+@media (max-width: 600px) {
+  .search-area-input {
+    top: 20%;
+    left: 10%;
+  }
+}
+
+@media (max-width: 1020px) and (min-width: 748px) {
+  .search-area-top-img {
+    height: 750px;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 747px) {
+  .search-area-top-img {
+    height: 700px;
+    object-fit: cover;  
+  }
+  .search-area-input-text {
+    width: 250px;
+  }
 }

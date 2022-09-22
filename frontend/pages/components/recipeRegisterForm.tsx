@@ -11,6 +11,11 @@ export const RecipeRegisterForm = () => {
     const [ingredientsNumber, setIngredientsNumber] = useState<number>(0);
     const [cookProcedures, setCookProcedures] = useState<CookProcedure[]>([]);
 
+    // useEffect(() => {
+    //     let width = window.innerWidth;
+    //     alert("width:" + width);
+    // },[]);
+
     const changeRecipeName = (e: any) => {
         e.preventDefault();
         setRecipeName(e.target.value)
@@ -141,7 +146,7 @@ export const RecipeRegisterForm = () => {
     },[ingredients.length]);
 
     return (
-        <div>
+        <div className="recipe-recipe-register-input-form-wrap">
             <div id="input-form" className="recipe-register-input-form scroll">
                 <h1>レシピ入力</h1>
                 <input type="text" className="recipe-register-input-text" placeholder="料理名" value={recipeName} onChange={changeRecipeName}></input><br/>

@@ -3,9 +3,6 @@
     color: white;
     padding: 13px 100px 10px 100px;
     height: 45px;
-    @media (max-width: 747px) { 
-      padding: 13px 100px 10px 30px;
-    }
 }
 
 .header-left {
@@ -25,5 +22,11 @@
 }
 
 .header-right-item {
-    margin-right: 40px;
+    margin-right: 20px;
+}
+
+@media (max-width: 747px) { 
+    .header {
+        padding: 13px 100px 10px 30px;
+    }
 }
