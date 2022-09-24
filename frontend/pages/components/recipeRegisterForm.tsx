@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { REGISTER_RECIPE } from "../../graphql/queries/mutation";
 import { InputCookProcedure, InputCreateRecipe, InputIngrediet } from "../../graphql/types/types";
 import { CookProcedure, Ingredient } from "../types/types";
+import { OverlaySpinner } from "./overlaySpinner";
 
 
 export const RecipeRegisterForm = () => {
@@ -13,6 +14,7 @@ export const RecipeRegisterForm = () => {
     const [ingredients, setIngredients] = useState<Ingredient[]>([]);
     const [ingredientsNumber, setIngredientsNumber] = useState<number>(0);
     const [cookProcedures, setCookProcedures] = useState<CookProcedure[]>([]);
+    const [ isLoading, setIsLoading ] = useState(false);
 
     const [addRecipe, { loading, error }] = useMutation(REGISTER_RECIPE);
 
@@ -223,13 +225,17 @@ export const RecipeRegisterForm = () => {
         let res = addRecipe({ variables: { inputCreateRecipe: data } });
         let resMsg: string = "";
 
+        setIsLoading(true);
+
         res.then(value => {
+
             if (!value) {
                 resMsg = "レシピ登録に失敗しました";
             } else {
                 resMsg = "レシピを登録しました";
             }
 
+            setIsLoading(false);
             alert(resMsg);
         });
     }
@@ -304,6 +310,8 @@ export const RecipeRegisterForm = () => {
             <div className="recipe-register-send-button">
                 <input className="recipe-register-button-color recipe-register-button-radius" type="button" value="登録する" onClick={registerRecipe}></input>
             </div>
+
+            {isLoading && <OverlaySpinner />}
         </div>
     )
 }

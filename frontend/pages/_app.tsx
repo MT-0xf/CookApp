@@ -4,6 +4,7 @@ import '../styles/search-results.css'
 import '../styles/recipe-register.css'
 import '../styles/top.css'
 import '../styles/header.css'
+import '../styles/overlaySpinner.css'
 
 import {
   ApolloClient,
