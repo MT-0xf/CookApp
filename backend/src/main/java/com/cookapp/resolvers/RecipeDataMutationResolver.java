@@ -7,6 +7,8 @@ import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+
 @Component
 @Slf4j
 public class RecipeDataMutationResolver implements GraphQLMutationResolver {
@@ -16,7 +18,7 @@ public class RecipeDataMutationResolver implements GraphQLMutationResolver {
         this.recipeDataRepository = recipeDataRepository;
     }
 
-    public boolean registerRecipeData(InputCreateRecipe inputCreateRecipe) {
+    public boolean registerRecipeData(InputCreateRecipe inputCreateRecipe) throws IOException {
         return this.recipeDataRepository.registerRecipeData(inputCreateRecipe);
     }
 }

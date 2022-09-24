@@ -8,23 +8,29 @@ export interface UserData {
   users: User[];
 }
 
-export interface RecipeData {
-  recipe_id: number;
-  dish_name: string;
-  ingredients: Ingredient[];
-  procedures: Procedure[];
+export type InputCreateRecipe = {
+  recipeData: InputRecipeData;
+  ingredients: InputIngrediet[];
+  procedures: InputCookProcedure[];
+
 }
 
-export interface Ingredient {
-  recipe_id: number;
-  ingredient_id: number;
-  ingredient_name: string;
+export type InputRecipeData = {
+  recipeId: string;
+  dishName: string;
+  img: string;
+}
+
+export type InputIngrediet = {
+  recipeId: string;
+  ingredientId: string;
+  ingredientName: string;
   amount: string;
 }
 
-export interface Procedure {
-  recipe_id: number;
-  order: number;
+export type InputCookProcedure = {
+  recipeId: string;
+  orderNumber: number;
   method: string;
   img: string;
 }

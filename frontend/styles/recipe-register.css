@@ -22,7 +22,7 @@
   opacity: 0.7;
   position: absolute;
   top: 7%;
-  left: 18%;
+  left: 22%;
 }
 
 .recipe-recipe-register-input-form-wrap {
@@ -108,7 +108,7 @@
 .ingredient-add-label {
   margin-top: 2px;
   width: 80px;
-  margin-right: 445px;
+  margin-right: 435px;
 }
 
 .cookprocedure-textarea {
@@ -169,7 +169,7 @@
 .cook-procedure-add-label {
   margin-top: 2px;
   width: 120px;
-  margin-right: 410px;
+  margin-right: 400px;
 }
 
 .cook-procedure-flex {

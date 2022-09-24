@@ -6,6 +6,7 @@ import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.util.List;
 
 @Component
@@ -17,7 +18,7 @@ public class RecipeDataQueryResolver implements GraphQLQueryResolver {
         this.recipeDataRepository = recipeDataRepository;
     }
 
-    public List<RecipeData> getRecipeData() {
+    public List<RecipeData> getRecipeData() throws IOException {
         return this.recipeDataRepository.getRecipeData();
     }
 

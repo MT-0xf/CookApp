@@ -1,4 +1,4 @@
-package com.cookapp.inputs.model;
+package com.cookapp.inputs;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

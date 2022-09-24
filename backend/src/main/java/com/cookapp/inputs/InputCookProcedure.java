@@ -1,4 +1,4 @@
-package com.cookapp.inputs.model;
+package com.cookapp.inputs;
 
 import lombok.Data;
 
@@ -50,7 +50,7 @@ public class InputCookProcedure {
             return false;
         }
 
-        if (this.img == null || this.img.length() > 999) {
+        if (this.img == null) {
             return false;
         }
 

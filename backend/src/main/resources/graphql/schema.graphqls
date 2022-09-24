@@ -18,6 +18,7 @@ type User {
 type RecipeData {
     recipeId: ID!
     dishName: String!
+    img: String!
     ingredients: [Ingredient]
     cookProcedures: [CookProcedure]
 }
@@ -51,6 +52,7 @@ type RegisterIngredientResponse {
 input InputRecipeData {
     recipeId: String
     dishName: String!
+    img: String!
 }
 
 type InputIngredient {

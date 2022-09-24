@@ -1,4 +1,7 @@
+import { useMutation } from "@apollo/client";
 import React, { useEffect, useState } from "react";
+import { REGISTER_RECIPE } from "../../graphql/queries/mutation";
+import { InputCookProcedure, InputCreateRecipe, InputIngrediet } from "../../graphql/types/types";
 import { CookProcedure, Ingredient } from "../types/types";
 
 
@@ -11,10 +14,7 @@ export const RecipeRegisterForm = () => {
     const [ingredientsNumber, setIngredientsNumber] = useState<number>(0);
     const [cookProcedures, setCookProcedures] = useState<CookProcedure[]>([]);
 
-    // useEffect(() => {
-    //     let width = window.innerWidth;
-    //     alert("width:" + width);
-    // },[]);
+    const [addRecipe, { loading, error }] = useMutation(REGISTER_RECIPE);
 
     const changeRecipeName = (e: any) => {
         e.preventDefault();
@@ -130,7 +130,109 @@ export const RecipeRegisterForm = () => {
         setCookProcedures(newCookProcedures);
     }
 
-    console.log(cookProcedures);
+    const validate = () => {
+
+        if (recipeName == "") {
+            return "料理名を入力してください";
+        }
+
+        if (recipeName.length > 45) {
+            return "料理名は45文字以内で入力してください";
+        }
+
+        if (recipeImg == "") {
+            return "料理画像を入力してください";
+        }
+
+        for (let i=0; i<ingredients.length; i++) {
+            if (ingredients[i].ingredientName == "") {
+                return "すべての材料名を入力してください";
+            }
+
+            if (ingredients[i].ingredientName.length > 45) {
+                return "材料名は45文字以内で入力してください";
+            }
+
+            if (ingredients[i].amount == "") {
+                return "すべての分量を入力してください";
+            }
+
+            if (ingredients[i].amount.length > 45) {
+                return "分量は45文字以内で入力してください";
+            }
+        }
+
+        for (let i=0; i<cookProcedures.length; i++) {
+            if (cookProcedures[i].img == "") {
+                return "すべての調理画像を入力してください";
+            }
+
+            if (cookProcedures[i].method == "") {
+                return "すべての調理方法を入力してください";
+            }
+
+            if (cookProcedures[i].method.length > 200) {
+                return "調理方法は200文字以内で入力してください";
+            }
+        }
+
+        return "OK";
+    }
+
+    const registerRecipe = () => {
+
+        let msg = validate();
+
+        if (msg != "OK") {
+            alert(msg);
+            return;
+        }
+
+        let inputIngredients: InputIngrediet[] = [];
+        for (let i=0; i<ingredients.length; i++) {
+            let inputIngredient: InputIngrediet = {
+                ingredientId: "",
+                ingredientName: ingredients[i].ingredientName,
+                amount: ingredients[i].amount,
+                recipeId: ""
+            }
+            inputIngredients.push(inputIngredient);
+        }
+
+        let inputProcedures: InputCookProcedure[] = [];
+        for (let i=0; i<cookProcedures.length; i++) {
+            let inputProcedure: InputCookProcedure = {
+                recipeId: "",
+                orderNumber: cookProcedures[i].orderNumber,
+                img: cookProcedures[i].img,
+                method: cookProcedures[i].method,
+            }
+            inputProcedures.push(inputProcedure);
+        }
+
+        let data: InputCreateRecipe = {
+            recipeData: {
+                recipeId: "",
+                dishName: recipeName,
+                img: recipeImg
+            },
+            ingredients: inputIngredients,
+            procedures: inputProcedures
+        }
+
+        let res = addRecipe({ variables: { inputCreateRecipe: data } });
+        let resMsg: string = "";
+
+        res.then(value => {
+            if (!value) {
+                resMsg = "レシピ登録に失敗しました";
+            } else {
+                resMsg = "レシピを登録しました";
+            }
+
+            alert(resMsg);
+        });
+    }
 
     useEffect(() => {
 
@@ -149,7 +251,7 @@ export const RecipeRegisterForm = () => {
         <div className="recipe-recipe-register-input-form-wrap">
             <div id="input-form" className="recipe-register-input-form scroll">
                 <h1>レシピ入力</h1>
-                <input type="text" className="recipe-register-input-text" placeholder="料理名" value={recipeName} onChange={changeRecipeName}></input><br/>
+                <input type="text" className="recipe-register-input-text" placeholder="料理名" maxLength={45} value={recipeName} onChange={changeRecipeName}></input><br/>
 
                 <div className="recipe-register-input-label">料理画像</div>
                 <input type="file" accept="image" value={recipeImgFileName} onChange={changeRecipeImg}></input><br/>
@@ -158,8 +260,8 @@ export const RecipeRegisterForm = () => {
                 <div>
                     {ingredients.map((ingredient, index) => (
                         <div key={"ingredient" + index} id={"ingredient" + index} className="ingredients-flex">
-                            <input className="input-text-ingredient" type="text" placeholder="材料" onChange={(e) => changeIngredientName(e, index)}></input>
-                            <input className="input-text-amount" type="text" placeholder="分量" value={ingredient.amount} onChange={(e) => changeAmount(e, index)}></input>
+                            <input className="input-text-ingredient" type="text" placeholder="材料" maxLength={45} onChange={(e) => changeIngredientName(e, index)}></input>
+                            <input className="input-text-amount" type="text" placeholder="分量" maxLength={45} value={ingredient.amount} onChange={(e) => changeAmount(e, index)}></input>
                             <div className="ingredient-remove-button-area" onClick={(e) => removeIngredient(e, index)}>
                                 <span className="dli-close"></span>
                             </div>
@@ -186,7 +288,7 @@ export const RecipeRegisterForm = () => {
                             </div>
                             <div className="recipe-register-input-label">調理画像</div>
                             <input type="file" value={cookProcedure.imgFileName} onChange={(e) => changeCookProcedureImg(e, index)}></input>
-                            <textarea className="cookprocedure-textarea" placeholder="調理手順" value={cookProcedure.method} onChange={(e) => changeMethod(e, index)}></textarea>
+                            <textarea className="cookprocedure-textarea" placeholder="調理手順" maxLength={200} value={cookProcedure.method} onChange={(e) => changeMethod(e, index)}></textarea>
                         </div>
                     ))}
 
@@ -200,7 +302,7 @@ export const RecipeRegisterForm = () => {
             </div>
 
             <div className="recipe-register-send-button">
-                <input className="recipe-register-button-color recipe-register-button-radius" type="button" value="登録する"></input>
+                <input className="recipe-register-button-color recipe-register-button-radius" type="button" value="登録する" onClick={registerRecipe}></input>
             </div>
         </div>
     )

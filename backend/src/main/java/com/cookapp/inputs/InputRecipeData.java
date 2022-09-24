@@ -1,4 +1,4 @@
-package com.cookapp.inputs.model;
+package com.cookapp.inputs;
 
 import lombok.Data;
 
@@ -6,6 +6,7 @@ import lombok.Data;
 public class InputRecipeData {
     private String recipeId;
     private String dishName;
+    private String img;
 
     public String getRecipeId() {
         return this.recipeId;
@@ -15,6 +16,8 @@ public class InputRecipeData {
         return this.dishName;
     }
 
+    public String getImg() { return this.img; }
+
     public void setRecipeId(String recipeId) {
         this.recipeId = recipeId;
     }
@@ -23,12 +26,20 @@ public class InputRecipeData {
         this.dishName = dishName;
     }
 
+    public void setImg(String img) {
+        this.img = img;
+    }
+
     public boolean isValid() {
 //        if (this.recipeId == null || this.recipeId.length() > 200) {
 //            return false;
 //        }
 
         if (this.dishName == null || this.dishName.length() > 45) {
+            return false;
+        }
+
+        if (this.img == null) {
             return false;
         }
 

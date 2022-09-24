@@ -1,8 +1,5 @@
 package com.cookapp.inputs;
 
-import com.cookapp.inputs.model.InputIngredient;
-import com.cookapp.inputs.model.InputCookProcedure;
-import com.cookapp.inputs.model.InputRecipeData;
 import lombok.Data;
 
 import java.util.List;

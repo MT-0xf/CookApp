@@ -1,9 +1,11 @@
 package com.cookapp.infra;
 
+import com.cookapp.infra.S3Service.FileUploadService;
+import com.cookapp.infra.S3Service.S3Config;
+import com.cookapp.inputs.InputCookProcedure;
 import com.cookapp.inputs.InputCreateRecipe;
-import com.cookapp.inputs.model.InputIngredient;
-import com.cookapp.inputs.model.InputCookProcedure;
-import com.cookapp.inputs.model.InputIngredientMaster;
+import com.cookapp.inputs.InputIngredient;
+import com.cookapp.inputs.InputIngredientMaster;
 import com.cookapp.repository.RecipeDataRepository;
 import com.cookapp.types.RecipeData;
 import lombok.AllArgsConstructor;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Component;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.transaction.Transactional;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -25,6 +28,13 @@ import java.util.UUID;
 public class RecipeDataRepositoryImpl implements RecipeDataRepository {
     @Autowired
     EntityManager entityManager;
+    S3Config s3Client;
+    FileUploadService fileUploadService;
+
+    public RecipeDataRepositoryImpl(S3Config s3Client) {
+        this.s3Client =  s3Client;
+        this.fileUploadService = new FileUploadService(s3Client.s3Client());
+    }
 
     @Override
     public List<RecipeData> getRecipeData() {
@@ -54,7 +64,7 @@ public class RecipeDataRepositoryImpl implements RecipeDataRepository {
 
     @Transactional
     @Override
-    public boolean registerRecipeData(InputCreateRecipe inputCreateRecipe) {
+    public boolean registerRecipeData(InputCreateRecipe inputCreateRecipe) throws IOException {
         if (!inputCreateRecipe.isValid()) {
             return false;
         }
@@ -62,10 +72,16 @@ public class RecipeDataRepositoryImpl implements RecipeDataRepository {
         // RecipeData登録
         String recipeId = UUID.randomUUID().toString();
         inputCreateRecipe.getRecipeData().setRecipeId(recipeId);
+
+        // 画像ファイルアップロード
+        String recipeDataImg = fileUploadService.fileUpload(inputCreateRecipe.getRecipeData().getImg());
+        inputCreateRecipe.getRecipeData().setImg(recipeDataImg);
+
         entityManager.
-                createNativeQuery("INSERT INTO recipe_data (recipe_id, dish_name) VALUES (:recipeId, :dishName)")
+                createNativeQuery("INSERT INTO recipe_data (recipe_id, dish_name, img) VALUES (:recipeId, :dishName, :img)")
                 .setParameter("recipeId", inputCreateRecipe.getRecipeData().getRecipeId())
                 .setParameter("dishName", inputCreateRecipe.getRecipeData().getDishName())
+                .setParameter("img", inputCreateRecipe.getRecipeData().getImg())
                 .executeUpdate();
 
         // Ingredient および IngredientMaster 登録
@@ -107,6 +123,10 @@ public class RecipeDataRepositoryImpl implements RecipeDataRepository {
         // 手順をCookProcedureに登録
         for (InputCookProcedure cookProcedure: inputCreateRecipe.getProcedures()) {
             cookProcedure.setRecipeId(recipeId);
+
+            // 画像ファイルアップロード
+            String cookProcedureImg = fileUploadService.fileUpload(cookProcedure.getImg());
+            cookProcedure.setImg(cookProcedureImg);
 
             entityManager.
                     createNativeQuery("INSERT INTO cook_procedure (recipe_id, order_number, method, img) VALUES (:recipeId, :orderNumber, :method, :img)")
