@@ -62,6 +62,20 @@ public class RecipeDataRepositoryImpl implements RecipeDataRepository {
         return results;
     }
 
+    @Override
+    public RecipeData getRecipeCookProcedureById(String id) {
+        String query = "SELECT rd FROM RecipeData rd INNER JOIN FETCH rd.cookProcedures WHERE rd.recipe_id = :id";
+
+        RecipeData recipeData = entityManager
+                .createQuery(query, RecipeData.class)
+                .setParameter("id", id)
+                .getSingleResult();
+
+        RecipeData result = recipeData;
+
+        return result;
+    }
+
     @Transactional
     @Override
     public boolean registerRecipeData(InputCreateRecipe inputCreateRecipe) throws IOException {

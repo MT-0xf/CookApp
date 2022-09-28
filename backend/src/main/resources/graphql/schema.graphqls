@@ -2,6 +2,8 @@ type Query {
     getUsers: [User]
     getRecipeData: [RecipeData]
     getRecipeCookProcedures: [RecipeData]
+  getRecipeCookProcedureById(recipeId: ID!): RecipeData
+
 }
 
 type Mutation {
@@ -81,4 +83,3 @@ input InputCreateRecipe {
     ingredients: [InputIngredient]
     procedures: [InputCookProcedure]
 }
-
