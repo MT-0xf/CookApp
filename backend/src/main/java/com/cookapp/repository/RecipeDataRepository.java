@@ -10,4 +10,6 @@ public interface RecipeDataRepository {
     public List<RecipeData> getRecipeData();
     public List<RecipeData> getRecipeCookProcedures();
     public boolean registerRecipeData(InputCreateRecipe inputCreateRecipe) throws IOException;
+    public RecipeData getRecipeCookProcedureById(String id);
+    public boolean registerRecipeData(InputCreateRecipe inputCreateRecipe);
 }
